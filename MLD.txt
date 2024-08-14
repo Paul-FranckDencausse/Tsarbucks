@@ -1,0 +1,56 @@
+Table SalonDeCafe {
+  - id : Identifiant unique
+  - nom : Nom du salon
+  - adresse : Adresse
+  - ville : Ville
+  - code_postal : Code postal
+  - description : Description du salon
+  - site_web : Site web (optionnel)
+  - email : Email (optionnel)
+  - telephone : Téléphone (optionnel)
+  - localisation : Localisation (optionnel)
+}
+
+Table Utilisateur {
+  - id : Identifiant unique
+  - nom : Nom de l'utilisateur
+  - prenom : Prénom de l'utilisateur
+  - email : Email unique
+  - mot_de_passe : Mot de passe
+  - role : Rôle de l'utilisateur (ex: admin, client)
+}
+
+Table Avis {
+  - id : Identifiant unique
+  - utilisateur_id : Référence à Utilisateur
+  - salon_id : Référence à SalonDeCafe
+  - note : Note donnée au salon
+  - commentaire : Commentaire de l'avis
+  - date : Date de l'avis
+}
+
+Table Menu {
+  - id : Identifiant unique
+  - salon_id : Référence à SalonDeCafe
+  - nom : Nom du produit
+  - description : Description du produit
+  - prix : Prix du produit
+}
+
+Table Reservation {
+  - id : Identifiant unique
+  - utilisateur_id : Référence à Utilisateur
+  - salon_id : Référence à SalonDeCafe
+  - date_heure : Date et heure de la réservation
+  - nombre_personnes : Nombre de personnes
+  - status : Statut de la réservation (ex: confirmé, annulé)
+}
+
+
+
+Ref: Avis.utilisateur_id > Utilisateur.id
+Ref: Avis.salon_id > SalonDeCafe.id
+Ref: Menu.salon_id > SalonDeCafe.id
+Ref: Reservation.utilisateur_id > Utilisateur.id
+Ref: Reservation.salon_id > SalonDeCafe.id
+Ref: Evenement.salon_id > SalonDeCafe.id

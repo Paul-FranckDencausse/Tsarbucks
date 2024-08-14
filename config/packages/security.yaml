@@ -1,0 +1,19 @@
+# config/packages/security.yaml
+security:
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: username # ou email, selon votre champ d'identification
+
+    firewalls:
+        main:
+            pattern: ^/
+            custom_authenticator: App\Security\AppCustomAuthentificatorAuthenticator
+            logout:
+                path: app_logout
+               
+
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto

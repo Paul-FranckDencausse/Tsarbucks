@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de Bord{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1 class="text-center">Bonjour, {{ app.user.username }}! ✅</h1>
+            <p class="text-center">Bienvenue dans votre tableau de bord.</p>
+        </div>
+
+        <!-- Cartes d'information -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Réservations</h5>
+                    <p class="card-text">Voir et gérer vos réservations.</p>
+                    <a href="{{ path('app_reservation') }}" class="btn btn-light">Gérer les Réservations</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Profil</h5>
+                    <p class="card-text">Voir ou éditer les informations de votre profil.</p>
+                    <a href="" class="btn btn-light">Voir le Profil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Déconnexion</h5>
+                    <p class="card-text">Vous déconnecter de votre compte.</p>
+                    <a href="{{ path('app_logout') }}" class="btn btn-light">Se Déconnecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graphique ou tableau de données -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Statistiques de Réservations</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Placeholder pour un graphique -->
+                    <canvas id="reservationsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Liens rapides -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Liens Rapides</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="" class="list-group-item list-group-item-action">Créer une Nouvelle Réservation</a>
+                        <a href="" class="list-group-item list-group-item-action">Voir les Avis</a>
+                        <a href="" class="list-group-item list-group-item-action">Contacter le Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+{% endblock %}

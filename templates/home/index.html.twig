@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Tsarbucks{% endblock %}
+
+{% block body %}
+<header class="bg-light text-black text-center py-5">
+    <div class="container">
+        <h1 class="display-4">Bienvenue chez TsarBucks</h1>
+        <p class="lead">Découvrez les meilleurs salons de cafés près de chez vous</p>
+        <a href="{{ path('app_salons') }}" class="btn btn-success btn-lg">Voir les salons</a>
+    </div>
+</header>
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Nos Salons de Cafés</h2>
+        <div class="row">
+            <!-- Tsarbucks Stalingrad -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cruise-bordeaux.com%2Fwp-content%2Fuploads%2F2016%2F02%2FPlace-Stalingrad-Vincent-Bengold.jpg&f=1&nofb=1&ipt=aeea955d3599e24a30dc2ec52520383152665618be7f0f0231d670830b1787d5&ipo=images" class="card-img-top" alt="Tsarbucks Stalingrad">
+                    <div class="card-body">
+                        <h5 class="card-title">Tsarbucks Stalingrad</h5>
+                        <p class="card-text">
+                            Niché au cœur de Bordeaux, le Tsarbucks Stalingrad est l'endroit idéal pour revivre les grandes heures de la ville tout en savourant un café digne des plus grandes révolutions. Avec une ambiance inspirée des années glorieuses de l'URSS, notre café vous offre une expérience unique mêlant histoire et modernité.
+                        </p>
+                        <a href="{{ path('app_stalingrad') }}" class="btn btn-success">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tsarbucks Catherine II -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.lequotidiendelart.com%2Fmedia%2Fcache%2Farticle_page_cover%2Fshared%2Farticle-image%2F1377.jpg&f=1&nofb=1&ipt=8960def0889c94161053c3b159a86d259c4f022e49d6935394edee95bd0c1147&ipo=images" class="card-img-top" alt="Tsarbucks Catherine II">
+                    <div class="card-body">
+                        <h5 class="card-title">Tsarbucks Catherine II</h5>
+                        <p class="card-text">
+                            Découvrez le Tsarbucks Catherine II, un hommage raffiné à l'une des tsarines les plus emblématiques de l'histoire russe. Situé rue de Moscou, à Paris, notre salon de café allie élégance impériale et confort moderne. Avec ses fauteuils luxueux et ses décors inspirés des palais de Saint-Pétersbourg, chaque visite est un voyage dans le temps.
+                        </p>
+                        <a href="{{ path('app_catherine') }}" class="btn btn-success">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tsarbucks Pierre Ier -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.dxd4zDLgQIrmS8xidP3vywHaE8%26pid%3DApi&f=1&ipt=394aa8320cd0d1acefa553c62b94f49875c4006be69789e6c01aa4c00767f190&ipo=images" class="card-img-top" alt="Tsarbucks Pierre Ier">
+                    <div class="card-body">
+                        <h5 class="card-title">Tsarbucks Pierre Ier</h5>
+                        <p class="card-text">
+                            Bienvenue au Tsarbucks Pierre Ier, un café où l'héritage de la grandeur russe rencontre le charme du sud de la France. Inspiré par Pierre le Grand, le tsar visionnaire qui a transformé la Russie en une puissance moderne, notre salon vous invite à une expérience de café inoubliable. Détendez-vous dans un cadre élégant qui rend hommage à l'ère des réformes et de la modernisation.
+                        </p>
+                        <a href="{{ path('app_pierre') }}" class="btn btn-success">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Témoignages</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Le meilleur café de l'empire ! On se sent comme un Tsar dans son palais."</p>
+                        <br>
+                        <footer class="blockquote-footer">Tsar Pierre le Grand</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Ambiance royale et café impérial, un vrai festin pour les sens !"</p>
+                        <br>
+                        <footer class="blockquote-footer">Tsarina Alexandra</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Des boissons dignes d'une cour impériale et un service royal !"</p>
+                        <br>
+                        <footer class="blockquote-footer">Tsar Nicolas II</footer>
+                    </blockquote>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
