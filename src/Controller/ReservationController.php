@@ -36,4 +36,11 @@ class ReservationController extends AbstractController
             'reservationForm' => $form->createView(),
         ]);
     }
+    #[Route('/reservation/success', name: 'app_reservation_success')]
+    public function success(): Response
+    {
+        return $this->render('reservation_success/index.html.twig', [
+            'controller_name' => 'ReservationSuccessController',
+        ]);
+    }
 }

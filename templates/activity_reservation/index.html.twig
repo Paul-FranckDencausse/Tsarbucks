@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservez une Activité{% endblock %}
+
+{% block body %}
+<style>
+    .activity-wrapper { margin: 2em auto; max-width: 1200px; width: 95%; font: 18px/1.5 sans-serif; }
+    .activity-wrapper h1 { text-align: center; }
+    .activity-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 2em; }
+    .activity-card img { width: 100%; height: auto; }
+    .activity-card-body { padding: 1em; }
+    .activity-card-title { font-size: 1.5em; margin-bottom: 0.5em; }
+    .activity-card-description { margin-bottom: 1em; }
+    .activity-card a { color: #007bff; text-decoration: none; }
+    .activity-card a:hover { text-decoration: underline; }
+</style>
+
+<div class="activity-wrapper">
+    <h1>Réservez une Activité</h1>
+
+    <div class="row">
+        <!-- Latte Art -->
+        <div class="col-md-4">
+            <div class="activity-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.squarespace-cdn.com%2Fcontent%2Fv1%2F5ebe4d17fa0cb47f52dd2601%2Fbf63362a-b99b-466f-9d21-a648925b9ba3%2Flatte%2Bart.jpeg&f=1&nofb=1&ipt=2f0e96c65cb15ebcc19d74dc280f4b393d655ded99023afd1e2882dce0343b64&ipo=images" alt="Latte Art">
+                <div class="activity-card-body">
+                    <h2 class="activity-card-title">Latte Art</h2>
+                    <p class="activity-card-description">
+                        Apprenez à créer de magnifiques dessins en mousse sur votre café. Découvrez les techniques de latte art avec nos experts.
+                    </p>
+                    <a href="path/to/latte-art-info" class="btn btn-success">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barista Training -->
+        <div class="col-md-4">
+            <div class="activity-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.siamhillscoffee.com%2Fwp-content%2Fuploads%2FWhat-is-a-Barista-%25E2%2580%2593-How-to-Professionally-Make-Coffee-%25E2%2580%2593-1-scaled.jpg&f=1&nofb=1&ipt=e5f287497a6d0695b4444cc52a51f7f5494866d46daf1e9eb7fa63ae02c70fa4&ipo=images" alt="Barista Training">
+                <div class="activity-card-body">
+                    <h2 class="activity-card-title">Formation Barista</h2>
+                    <p class="activity-card-description">
+                        Devenez un barista expert en apprenant tout sur la préparation du café, des techniques d'extraction à la création de boissons créatives.
+                    </p>
+                    <a href="path/to/barista-training-info" class="btn btn-success">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coffee Roasting -->
+        <div class="col-md-4">
+            <div class="activity-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cafe-privilege.com%2Fmedia%2Fimages%2Fnewsletter%2FAdobeStock_209264932---Artem-Varnitsin-2.jpg&f=1&nofb=1&ipt=fc3f4bddfd9ed67ada18fc2f3345d5b51c6dc1886e620f40cbaa8b5833f899a7&ipo=images" alt="Coffee Roasting">
+                <div class="activity-card-body">
+                    <h2 class="activity-card-title">Torréfaction du Café</h2>
+                    <p class="activity-card-description">
+                        Découvrez le processus de torréfaction du café et apprenez à développer des arômes uniques pour une expérience caféinée exceptionnelle.
+                    </p>
+                    <a href="path/to/coffee-roasting-info" class="btn btn-success">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Russian Culture Activity -->
+        <div class="col-md-4">
+            <div class="activity-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.voyage-russie.fr%2Fcdn%2Fru-public%2Ftraditions_russe.jpg&f=1&nofb=1&ipt=ce839f0cf0f84c966bc6a0352f52e2149c37eba853c2952e7d362864855829ff&ipo=images" alt="Russian Culture">
+                <div class="activity-card-body">
+                    <h2 class="activity-card-title">Culture Russe</h2>
+                    <p class="activity-card-description">
+                        Explorez les aspects fascinants de la culture russe, y compris les traditions du café, les arts et plus encore.
+                    </p>
+                    <a href="path/to/russian-culture-info" class="btn btn-success">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chess Club -->
+        <div class="col-md-4">
+            <div class="activity-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0346%2F5320%2F8708%2Fproducts%2Fjeu-echecs-russe-marqueterie_2000x.jpg%3Fv%3D1610732500&f=1&nofb=1&ipt=2c21887166bd979202b010fbb1b38f42fb637488bd2601190d94f53fecd4f6cf&ipo=images" alt="Chess Club">
+                <div class="activity-card-body">
+                    <h2 class="activity-card-title">Club d'Échecs</h2>
+                    <p class="activity-card-description">
+                        Rejoignez notre club d'échecs pour améliorer vos compétences stratégiques et participer à des tournois passionnants.
+                    </p>
+                    <a href="path/to/chess-club-info" class="btn btn-success">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

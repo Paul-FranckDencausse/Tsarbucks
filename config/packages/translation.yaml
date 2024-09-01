@@ -1,0 +1,6 @@
+# config/packages/translation.yaml
+framework:
+    default_locale: 'fr' # Par exemple, français par défaut
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallback: 'en' # Langue de secours en cas d'absence de traduction

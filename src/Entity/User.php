@@ -19,20 +19,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $username = ''; // Initialise par défaut à une chaîne vide
 
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private $email; // New email property
+
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
     private $password;
 
+    private $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
+
+    // ID getter
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    // Username getters and setters
     public function getUserIdentifier(): string
     {
-        // Retourne une chaîne vide ou une valeur par défaut si $username est null
         return $this->username ?? '';
     }
 
@@ -48,6 +59,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this;
     }
 
+    // Email getters and setters
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    // Roles getters and setters
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -63,6 +88,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this;
     }
 
+    // Password getters and setters
     public function getPassword(): string
     {
         return $this->password;
@@ -84,13 +110,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     {
         return $this->getUserIdentifier() === $user->getUserIdentifier();
     }
-    private $reservations;
 
-    public function __construct()
-    {
-        $this->reservations = new ArrayCollection();
-    }
-
+    // Reservation-related methods
     public function getReservations(): Collection
     {
         return $this->reservations;
@@ -109,7 +130,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     public function removeReservation(Reservation $reservation): self
     {
         if ($this->reservations->removeElement($reservation)) {
-            // Set the owning side to null (unless already changed)
             if ($reservation->getUser() === $this) {
                 $reservation->setUser(null);
             }

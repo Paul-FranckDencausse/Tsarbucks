@@ -1,0 +1,77 @@
+{% extends 'russianBase.html.twig' %}
+
+{% block title %}Главная - Tsarbucks{% endblock %}
+
+{% block body %}
+<header class="text-center text-white py-5" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images'); background-size: cover; background-position: center; min-height: 400px;">
+    <div class="container">
+        <h1 class="display-4">Добро пожаловать в TsarBucks</h1>
+        <p class="lead">Откройте для себя лучшие кофейни рядом с вами</p>
+        <a href="{{ path('app_salons') }}" class="btn btn-success btn-lg">Посмотреть кофейни</a>
+    </div>
+</header>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Концепция Tsarbucks</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images" class="img-fluid rounded" alt="Café Tsarbucks">
+            </div>
+            <div class="col-md-6">
+                <p class="text-center">
+                     В Tsarbucks мы не просто кофейня, мы – целое впечатление. Вдохновленные историей и культурой России, каждая кофейня Tsarbucks предлагает вам утончённую и уютную атмосферу для наслаждения высококачественным кофе. Независимо от того, ищете ли вы место для отдыха или хотите узнать больше о культуре, наши кофейни созданы для вас.
+                </p>
+                <p class="text-center">
+                 Помимо изысканных напитков, Tsarbucks приглашает вас принять участие в тематических мастер-классах, где вы можете узнать больше о кофе или открыть для себя интересные аспекты русской культуры. От обжарки до дегустации, а также лекций о российской императорской истории, каждый визит в Tsarbucks – это погружение в мир вкусов и знаний.
+                </p>
+                <p class="text-center">
+                </p>
+                <p class="text-center">
+                    Наши кофейни – это места, где традиции встречаются с современностью, где каждая чашка кофе становится возможностью путешествовать во времени и пространстве. Приходите и узнайте, почему Tsarbucks – это не просто кофейня, а настоящая дестинация.
+                </p>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Отзывы</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Лучший кофе в империи! Вы чувствуете себя царем в своем дворце."</p>
+                        <br>
+                        <footer class="blockquote-footer">Царь Пётр Великий</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Королевская атмосфера и императорский кофе — настоящий праздник для чувств!"</p>
+                        <br>
+                        <footer class="blockquote-footer">Царица Александра</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Напитки, достойные императорского двора, и королевское обслуживание!"</p>
+                        <br>
+                        <footer class="blockquote-footer">Царь Николай II</footer>
+                    </blockquote>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

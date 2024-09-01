@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de Bord Admin{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Bienvenue sur le Tableau de Bord Admin</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gérer les Utilisateurs</h5>
+                    <p class="card-text">Ajouter, modifier ou supprimer des utilisateurs.</p>
+                  <a href="{{ path('admin_user_list') }}" class="btn btn-success">Gérer les utilisateurs</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gérer les Salons de Café</h5>
+                    <p class="card-text">Gérer la liste des salons de café.</p>
+                    <a href="" class="btn btn-success">Voir les Salons</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Voir les Réservations</h5>
+                    <p class="card-text">Consulter toutes les réservations.</p>
+                    <a href="" class="btn btn-success">Voir les Réservations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

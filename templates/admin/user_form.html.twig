@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user ? 'Modifier l\'utilisateur' : 'Nouvel utilisateur' }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>{{ user ? 'Modifier l\'utilisateur' : 'Nouvel utilisateur' }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-success">{{ user ? 'Modifier' : 'Ajouter' }}</button>
+        <a href="{{ path('admin_user_list') }}" class="btn btn-secondary">Annuler</a>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,5 @@
+# config/packages/test/framework.yaml
+framework:
+    test: true
+    session:
+        storage_id: storage_factory_id

@@ -1,0 +1,91 @@
+
+
+MPD 
+
+## **1. Table `salons`**
+La table `salons` contient les informations sur les salons ou cafés.
+
+- **Colonnes :**
+  - `id` (int) : Clé primaire, identifiant unique du salon, auto-incrémenté.
+  - `nom` (varchar(255)) : Nom du salon.
+  - `adresse` (varchar(255)) : Adresse complète du salon.
+  - `ville` (varchar(255)) : Ville où se trouve le salon.
+  - `code_postal` (varchar(255)) : Code postal du salon.
+  - `description` (text) : Description détaillée du salon.
+  - `site_web` (varchar(255)) : URL du site web du salon.
+  - `email` (varchar(255)) : Adresse email de contact du salon.
+  - `telephone` (varchar(255)) : Numéro de téléphone du salon.
+
+- **Fonction :**
+  - Cette table stocke les informations essentielles sur chaque salon ou café dans la base de données.
+
+## **2. Table `utilisateurs`**
+La table `utilisateurs` contient les informations des utilisateurs inscrits.
+
+- **Colonnes :**
+  - `id` (int) : Clé primaire, identifiant unique de l'utilisateur, auto-incrémenté.
+  - `nom` (varchar(255)) : Nom de l'utilisateur.
+  - `prenom` (varchar(255)) : Prénom de l'utilisateur.
+  - `email` (varchar(255)) : Adresse email unique de l'utilisateur (unique).
+  - `mot_de_passe` (varchar(255)) : Mot de passe de l'utilisateur.
+  - `role` (varchar(255)) : Rôle de l'utilisateur (ex: admin, client).
+
+- **Fonction :**
+  - Cette table enregistre les informations de base sur les utilisateurs, y compris les données d'identification et les rôles.
+
+## **3. Table `avis`**
+La table `avis` enregistre les avis laissés par les utilisateurs pour les salons.
+
+- **Colonnes :**
+  - `id` (int) : Clé primaire, identifiant unique de l'avis, auto-incrémenté.
+  - `utilisateur_id` (int) : Clé étrangère référente à `utilisateurs(id)`, identifiant de l'utilisateur ayant laissé l'avis.
+  - `salon_id` (int) : Clé étrangère référente à `salons(id)`, identifiant du salon concerné par l'avis.
+  - `note` (int) : Note attribuée au salon, sur une échelle définie.
+  - `commentaire` (text) : Commentaire laissé par l'utilisateur.
+  - `date` (datetime) : Date et heure à laquelle l'avis a été laissé.
+
+- **Relations :**
+  - Un utilisateur peut laisser plusieurs avis (relation un-à-plusieurs avec `utilisateurs`).
+  - Un salon peut recevoir plusieurs avis (relation un-à-plusieurs avec `salons`).
+
+## **4. Table `menus`**
+La table `menus` contient les informations des articles ou plats proposés dans les salons.
+
+- **Colonnes :**
+  - `id` (int) : Clé primaire, identifiant unique du menu, auto-incrémenté.
+  - `salon_id` (int) : Clé étrangère référente à `salons(id)`, identifiant du salon proposant le menu.
+  - `nom` (varchar(255)) : Nom du plat ou de l'article.
+  - `description` (text) : Description détaillée de l'article.
+  - `prix` (decimal) : Prix de l'article.
+
+- **Relations :**
+  - Un salon peut proposer plusieurs articles dans son menu (relation un-à-plusieurs avec `salons`).
+
+## **5. Table `reservations`**
+La table `reservations` enregistre les réservations effectuées par les utilisateurs pour les salons.
+
+- **Colonnes :**
+  - `id` (int) : Clé primaire, identifiant unique de la réservation, auto-incrémenté.
+  - `utilisateur_id` (int) : Clé étrangère référente à `utilisateurs(id)`, identifiant de l'utilisateur ayant effectué la réservation.
+  - `salon_id` (int) : Clé étrangère référente à `salons(id)`, identifiant du salon concerné par la réservation.
+  - `date_heure` (datetime) : Date et heure de la réservation.
+  - `nombre_personnes` (int) : Nombre de personnes pour la réservation.
+  - `status` (varchar(255)) : Statut de la réservation (ex: confirmée, annulée).
+
+- **Relations :**
+  - Un utilisateur peut faire plusieurs réservations (relation un-à-plusieurs avec `utilisateurs`).
+  - Un salon peut avoir plusieurs réservations (relation un-à-plusieurs avec `salons`).
+
+## **6. Contraintes et Relations**
+
+- **Clés Primaires :**
+  - Toutes les tables ont une colonne `id` définie comme clé primaire, ce qui garantit l'unicité de chaque enregistrement.
+
+- **Clés Étrangères :**
+  - `utilisateur_id` dans `avis`, `reservations` : Référence la table `utilisateurs`.
+  - `salon_id` dans `avis`, `menus`, `reservations` : Référence la table `salons`.
+
+- **Contrainte d'unicité :**
+  - La colonne `email` de la table `utilisateurs` est unique, empêchant les doublons pour les adresses email.
+
+---

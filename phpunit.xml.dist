@@ -1,0 +1,7 @@
+<phpunit bootstrap="config/bootstrap.php">
+    <php>
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
+    </php>
+    <!-- Other configurations -->
+</phpunit>
+

@@ -1,0 +1,77 @@
+{% extends 'englishBase.html.twig' %}
+
+{% block title %}Home - Tsarbucks{% endblock %}
+
+{% block body %}
+<header class="text-center text-white py-5" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images'); background-size: cover; background-position: center; min-height: 400px;">
+    <div class="container">
+        <h1 class="display-4">Welcome to TsarBucks</h1>
+        <p class="lead">Discover the best coffee shops near you</p>
+        <a href="{{ path('app_salons') }}" class="btn btn-success btn-lg">View Coffee Shops</a>
+    </div>
+</header>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">The Tsarbucks Concept</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images" class="img-fluid rounded" alt="Café Tsarbucks">
+            </div>
+            <div class="col-md-6">
+                <p class="text-center">
+                    At Tsarbucks, we are not just a coffee shop; we are an experience. Inspired by Russian history and culture, each Tsarbucks offers you a refined and comfortable setting to enjoy high-quality coffee. Whether you're looking for a place to relax or eager to learn more about culture, our coffee shops are made for you.
+                </p>
+                <p class="text-center">
+                    In addition to exquisite drinks, Tsarbucks invites you to participate in themed workshops where you can learn more about coffee or discover fascinating aspects of Russian culture. From roasting to tasting, along with lectures on imperial Russian history, every visit to Tsarbucks is a journey into a world of flavors and knowledge.
+                </p>
+                <p class="text-center">
+                </p>
+                <p class="text-center">
+                    Our coffee shops are places where tradition meets modernity, where every cup of coffee becomes an opportunity to travel through time and space. Come and discover why Tsarbucks is not just a coffee shop — it's a destination.
+                </p>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Testimonials</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"The best coffee in the empire! You feel like a Tsar in your own palace."</p>
+                        <br>
+                        <footer class="blockquote-footer">Tsar Peter the Great</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Royal atmosphere and imperial coffee — a true feast for the senses!"</p>
+                        <br>
+                        <footer class="blockquote-footer">Tsarina Alexandra</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">"Drinks worthy of an imperial court and royal service!"</p>
+                        <br>
+                        <footer class="blockquote-footer">Tsar Nicholas II</footer>
+                    </blockquote>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
