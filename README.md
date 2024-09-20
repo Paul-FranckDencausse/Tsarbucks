@@ -1,37 +1,35 @@
 
-# TsarBucks
+TsarBucks
 
-**TsarBucks** est un site parodique inspiré d'une célèbre chaîne de cafés, conçu pour offrir une expérience unique avec un design moderne et entièrement **responsive**. Il présente divers salons de café fictifs inspirés de figures historiques russes, avec un design élégant et des fonctionnalités modernes.
+Toute ressemblance avec une marque américaine de salons de cafés est fortuite.Blague à part ce site ne fait aucune référence à l'actualité. La Russie a été choisie du fait du jeu de mots , ni plus ni moins.
+Les activités culturelles sont en lien avec la richesse des cultures slaves et de l'amour du café.
+Projet pour le B3/Titre pro : concepteur:développeur d'applications web.
 
-## Table des matières
+Table des matières
 
 - [Aperçu](#aperçu)
 - [Caractéristiques principales](#caractéristiques-principales)
 - [Technologies utilisées](#technologies-utilisées)
 - [Installation](#installation)
-- [Fonctionnalités Responsives](#fonctionnalités-responsives)
 - [Contribuer](#contribuer)
 
 ## Aperçu
 
-Le site TsarBucks propose des salons de café thématiques avec des descriptions détaillées, des images immersives et une navigation intuitive. Chaque page met en avant une ambiance unique inspirée de l’histoire de la Russie. 
-
-L'objectif est de créer une expérience utilisateur fluide, quel que soit l'appareil utilisé : ordinateur, tablette ou smartphone.
+La charte graphique prend inspiration sur des salons déjà existants choisis au hasard (comme Starbucks). Le logo a été récupéré en ligne.
 
 ## Caractéristiques principales
 
-- **Responsive Design** : Optimisé pour tous types d'écrans, du mobile aux grands écrans d'ordinateur.
-- **Navigation fluide** : Un système de navigation simple et intuitif permettant de passer d'un salon à un autre en un clic.
-- **Images optimisées** : Les images sont chargées de manière à minimiser le temps de chargement tout en maintenant une qualité optimale.
-- **Thèmes historiques** : Chaque salon de café est dédié à une figure historique russe, apportant un storytelling unique.
+- **Responsive Design/Mobile First** : Le site s'adapte en fonction de l'écran en donnant la priorité aux téléphones
+- **UX/UI**: J'ai mis un point d'honneur à respecter les normes d'accessibilité du consortium W3.
+- **Thèmes historiques** : Les salons et les produits des menus font références à des Tsars , villes , batailles ou dirigeants soviétiques avec humour.
   
 ## Technologies utilisées
 
-- **Symfony** : Framework PHP utilisé pour la structure du site.
-- **Bootstrap 5** : Utilisé pour le responsive design, avec un focus sur les composants adaptatifs et les grilles flexibles.
-- **Twig** : Moteur de template pour une séparation claire de la logique et de la vue.
-- **HTML5 & CSS3** : Langages de base pour la structuration et la mise en page.
-- **JavaScript** : Pour des éléments interactifs et dynamiques.
+- **Symfony** : Car je suis Français. COCORICO
+- **Bootstrap 5** : Transition depuis W3CSS vers l'original.
+- **Twig** : Pour les templates.
+- **HTML5 & CSS3** : Indispensables.
+- **JavaScript** : Pareil.
   
 ## Installation
 
@@ -51,21 +49,15 @@ L'objectif est de créer une expérience utilisateur fluide, quel que soit l'app
    ```bash
    symfony server:start
    ```
-5. Accédez au site à l'adresse suivante : 
+5. Accédez au site à l'adresse suivante :  virtuai.cluster029.hosting.ovh.net/ (EN COURS DE DEPLOIEMENT , PAS ENCORE DE NOM DE DOMAINE)
 
-## Fonctionnalités Responsives
-
-L'une des principales priorités lors du développement de TsarBucks était de s'assurer que le site offre une expérience utilisateur cohérente, peu importe la taille de l'écran. Voici quelques-unes des fonctionnalités spécifiques liées au design responsive :
-
-- **Grille flexible avec Bootstrap** : Utilisation du système de grille flexbox pour ajuster la mise en page et la disposition des éléments automatiquement selon la taille de l'écran.
-  
-- **Images adaptatives** : Les images sont redimensionnées et adaptées automatiquement pour offrir des temps de chargement rapides sans sacrifier la qualité visuelle.
-
-- **Menus et navigation** : Le menu de navigation passe d'une barre classique sur les grands écrans à un menu "hamburger" sur les petits appareils, facilitant ainsi la navigation sur mobile.
-
-- **Cartes et boutons** : Chaque salon de café est présenté dans des cartes adaptées aux écrans mobiles, avec des boutons CTA (`Call To Action`) placés stratégiquement et redimensionnés automatiquement.
-
+   
 ## Contribuer
 
-Les contributions sont les bienvenues pour améliorer ce projet. Si vous avez des idées, des suggestions ou des corrections, n'hésitez pas à faire une pull request ou à ouvrir une issue sur le dépôt GitHub.
+L'auteur accepte les contributions financières.
+
+PS Le site est sous licence communiste (comprendre : open-source)
+
+Bien à vous , 
+Paul-Franck Dencausse
 
