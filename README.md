@@ -27,7 +27,7 @@ La charte graphique prend inspiration sur des salons déjà existants choisis au
   
 ## Technologies utilisées
 
-- **Symfony** : Car je suis Français. COCORICO
+- **Symfony** : Pour avoir un framework MVC.
 - **Bootstrap 5** : Transition depuis W3CSS vers l'original.
 - **Twig** : Pour les templates.
 - **HTML5 & CSS3** : Indispensables.
