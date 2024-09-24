@@ -11,7 +11,9 @@ Table des matières
 - [Caractéristiques principales](#caractéristiques-principales)
 - [Technologies utilisées](#technologies-utilisées)
 - [Installation](#installation)
+- [CRUD](#CRUD)
 - [Contribuer](#contribuer)
+  
 
 ## Aperçu
 
@@ -54,10 +56,10 @@ La charte graphique prend inspiration sur des salons déjà existants choisis au
 ## CRUD
 
 Gestion du profil utilisateur.
-Create : formulaire d'inscription.
-Read : Dashboard utilisateur.
-Update : Mise à jour des informations personelles conformément au RGPD.
-Delete : Possibilité de supprimer son compte et les informations liées ; conformément au RGPD.
+- Create : formulaire d'inscription.
+- Read : Dashboard utilisateur.
+- Update : Mise à jour des informations personelles conformément au RGPD.
+- Delete : Possibilité de supprimer son compte et les informations liées ; conformément au RGPD.
    
 ## Contribuer
 
