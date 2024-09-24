@@ -51,12 +51,19 @@ La charte graphique prend inspiration sur des salons déjà existants choisis au
    ```
 5. Accédez au site à l'adresse suivante :  virtuai.cluster029.hosting.ovh.net/ (EN COURS DE DEPLOIEMENT , PAS ENCORE DE NOM DE DOMAINE)
 
+## CRUD
+
+Gestion du profil utilisateur.
+Create : formulaire d'inscription.
+Read : Dashboard utilisateur.
+Update : Mise à jour des informations personelles conformément au RGPD.
+Delete : Possibilité de supprimer son compte et les informations liées ; conformément au RGPD.
    
 ## Contribuer
 
-L'auteur accepte les contributions financières.
+Project scolaire. Libre à vous de fork et  de branch.
 
-PS Le site est sous licence communiste (comprendre : open-source)
+PS Tout est open-source.
 
 Bien à vous , 
 Paul-Franck Dencausse
