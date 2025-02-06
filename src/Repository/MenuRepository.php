@@ -16,5 +16,11 @@ class MenuRepository extends ServiceEntityRepository
         parent::__construct($registry, Menu::class);
     }
 
-   
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->getQuery()
+            ->getResult();
+    }
+    
 }
