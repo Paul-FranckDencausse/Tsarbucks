@@ -1,15 +1,33 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        z-index: 1;
+    }
 
+    .container {
+        z-index: 2;
+    }
+    </style>
+{% endblock %}
 {% block title %}Accueil - Tsarbucks{% endblock %}
 
 {% block body %}
-<header class="text-center text-white py-5" style="background-image: url('images/devanture.jpg'); background-size: cover; background-position: center; min-height: 400px;">
-    <div class="container">
+
+<header class="text-center text-white py-5" style="background-image: url('images/devanture.jpg'); background-size: cover; background-position: center; min-height: 400px; position: relative;">
+    <div class="overlay"></div>
+    <div class="container position-relative">
         <h1 class="display-4">Bienvenue chez TsarBucks</h1>
         <p class="lead">Découvrez les meilleurs salons de cafés près de chez vous</p>
-       
     </div>
 </header>
+
 
 <section class="py-5 bg-light">
     <div class="container">
@@ -50,6 +68,7 @@
         </div>
     </div>
 </section>
+
 <section class="py-5">
     <div class="container">
         <h2 class="text-center mb-4">Témoignages</h2>
@@ -117,10 +136,10 @@
     </div>
 </div>
 
-
-
 {% endblock %}
+
 {% block javascript %}
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const cookieModal = new bootstrap.Modal(document.getElementById('cookieModal'), {
@@ -145,5 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
 {% endblock %}
 

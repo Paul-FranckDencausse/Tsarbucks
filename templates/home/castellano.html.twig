@@ -1,36 +1,68 @@
-{% extends 'castellanoBase.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        z-index: 1;
+    }
 
+    .container {
+        z-index: 2;
+    }
+    </style>
+{% endblock %}
 {% block title %}Inicio - Tsarbucks{% endblock %}
 
 {% block body %}
-<header class="text-center text-white py-5" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images'); background-size: cover; background-position: center; min-height: 400px;">
-    <div class="container">
+
+<header class="text-center text-white py-5" style="background-image: url('images/devanture.jpg'); background-size: cover; background-position: center; min-height: 400px; position: relative;">
+    <div class="overlay"></div>
+    <div class="container position-relative">
         <h1 class="display-4">Bienvenido a TsarBucks</h1>
-        <p class="lead">Descubre las mejores cafeterías cerca de ti</p>
-        <a href="{{ path('app_salons_castellano') }}" class="btn btn-success btn-lg">Ver Cafeterías</a>
+        <p class="lead">Descubre los mejores salones de café cerca de ti</p>
     </div>
 </header>
 
 <section class="py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-4">El Concepto de Tsarbucks</h2>
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images" class="img-fluid rounded" alt="Café Tsarbucks">
+        <h2 class="text-center mb-5 text-success fw-bold" style="letter-spacing: 1px;">El Concepto Tsarbucks</h2>
+        <div class="row align-items-center">
+            <!-- Sección de Imagen -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="{{ asset('images/toulouse.jpg') }}" class="img-fluid rounded shadow" alt="Café Tsarbucks">
             </div>
+            <!-- Sección de Texto y Botones -->
             <div class="col-md-6">
-                <p class="text-center">
-                    En Tsarbucks, no somos solo una cafetería; somos una experiencia. Inspirados por la historia y la cultura rusa, cada Tsarbucks te ofrece un ambiente refinado y cómodo para disfrutar de café de alta calidad. Ya sea que estés buscando un lugar para relajarte o ansioso por aprender más sobre la cultura, nuestras cafeterías están hechas para ti.
-                </p>
-                <p class="text-center">
-                    Además de bebidas exquisitas, Tsarbucks te invita a participar en talleres temáticos donde puedes aprender más sobre el café o descubrir aspectos fascinantes de la cultura rusa. Desde la tostación hasta la degustación, junto con conferencias sobre la historia imperial rusa, cada visita a Tsarbucks es un viaje a un mundo de sabores y conocimientos.
-                </p>
-                <p class="text-center">
-                </p>
-                <p class="text-center">
-                    Nuestras cafeterías son lugares donde la tradición se encuentra con la modernidad, donde cada taza de café se convierte en una oportunidad para viajar a través del tiempo y el espacio. Ven y descubre por qué Tsarbucks no es solo una cafetería, sino un destino.
-                </p>
-                </p>
+                <div class="mb-4 text-center">
+                    <p class="lead">
+                        <strong>¡Bienvenido a TsarBucks!</strong><br>
+                        Cualquier parecido con una cadena de cafeterías estadounidense es pura coincidencia.
+                    </p>
+                    <a href="{{ path('app_salons') }}" class="btn btn-success btn-lg text-white shadow-sm">
+                        <i class="fas fa-coffee"></i> Ver Salones
+                    </a>
+                </div>
+                <div class="mb-4 text-center">
+                    <p class="lead">
+                        El alma de Tsarbucks es el <strong>humor excéntrico</strong> y las <strong>actividades amistosas</strong>.
+                    </p>
+                    <a href="{{ path('app_activites') }}" class="btn btn-info btn-lg text-white shadow-sm">
+                        <i class="fas fa-users"></i> Ver Actividades
+                    </a>
+                </div>
+                <div class="text-center">
+                    <p class="lead">
+                        Nuestro menú es un verdadero <strong>viaje culinario</strong> con un espíritu lúdico.
+                    </p>
+                    <a href="{{ path('app_menu_index') }}" class="btn btn-success btn-lg text-white shadow-sm">
+                        <i class="fas fa-utensils"></i> Ver Menú
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -43,35 +75,93 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">"¡El mejor café del imperio! Te sientes como un Zar en tu propio palacio."</p>
-                        <br>
-                        <footer class="blockquote-footer">Zar Pedro el Grande</footer>
+                        <p class="mb-0">"¡El mejor café del imperio! Te sientes como un zar en tu palacio."</p>
+                        <footer class="blockquote-footer mt-3">Zar Pedro el Grande</footer>
                     </blockquote>
                 </div>
                 <div class="carousel-item">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">"¡Ambiente real y café imperial, un verdadero festín para los sentidos!"</p>
-                        <br>
-                        <footer class="blockquote-footer">Zarina Alexandra</footer>
+                        <p class="mb-0">"Ambiente real y café imperial, ¡un verdadero festín para los sentidos!"</p>
+                        <footer class="blockquote-footer mt-3">Zarina Alexandra</footer>
                     </blockquote>
                 </div>
                 <div class="carousel-item">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">"¡Bebidas dignas de una corte imperial y un servicio real!"</p>
-                        <br>
-                        <footer class="blockquote-footer">Zar Nicolás II</footer>
+                        <p class="mb-0">"¡Bebidas dignas de una corte imperial y servicio real!"</p>
+                        <footer class="blockquote-footer mt-3">Zar Nicolás II</footer>
                     </blockquote>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </a>
+                <span class="">Siguiente</span>
+            </button>
+            <ol class="carousel-indicators">
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></li>
+            </ol>
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cookieModalLabel">¿Algunas galletas? 🍪</h5>
+            </div>
+            <div class="modal-body text-center">
+                <p>
+                    Camarada, necesitamos tus cookies para alimentar la revolución del café.<br>
+                    Prometemos no espiar, solo buen café y estadísticas anónimas.
+                </p>
+                <p>
+                    Este proyecto es una creación ficticia realizada en el marco de la licenciatura y título profesional de desarrollador/diseñador de aplicaciones web en My Digital School Bordeaux por Paul-Franck Dencausse.
+                    Tsarbucks se inspira libremente en la historia de la Rusia Zarista y Soviética hasta la caída del Muro de Berlín. No es, de ninguna manera, una apología de estos regímenes políticos ni del actual.
+                    Espero que sepas apreciar este proyecto no muy ortodoxo ni muy católico sin protestar.
+                </p>
+                <img src="https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif" alt="Gif de galleta" class="img-fluid rounded">
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" id="acceptCookies">¡De acuerdo, por la Tsarbuckocracia!</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, prefiero quedarme sin café...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieModal = new bootstrap.Modal(document.getElementById('cookieModal'), {
+        backdrop: 'static',
+        keyboard: false
+    });
+    const acceptButton = document.getElementById('acceptCookies');
+
+    // Verificar si la cookie existe
+    const isCookieAccepted = document.cookie.split('; ').find(row => row.startsWith('cookieConsent='));
+
+    // Mostrar el modal si la cookie no está configurada
+    if (!isCookieAccepted) {
+        cookieModal.show();
+    }
+
+    // Manejar el clic en el botón
+    acceptButton.addEventListener('click', () => {
+        document.cookie = "cookieConsent=true; path=/; max-age=" + 60 * 60 * 24 * 365; // 1 año
+        alert('¡Gracias, camarada! Tu contribución quedará grabada en la historia del café imperial.');
+        cookieModal.hide();
+    });
+});
+</script>
+
 {% endblock %}

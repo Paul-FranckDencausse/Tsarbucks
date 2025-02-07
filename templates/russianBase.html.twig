@@ -5,72 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}TsarBucks{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/path/to/your/custom/styles.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Убедиться, что вся страница занимает хотя бы 100% высоты окна просмотра */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Основное содержимое должно занимать все доступное пространство */
+        main {
+            flex: 1;
+        }
+
+        /* Подвал должен прилипать к низу */
+        footer {
+            flex-shrink: 0;
+        }
+
+        /* Стили навигационной панели */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #f8f9fa; /* Светло-белый для лучшего контраста */
+            font-weight: 500;
+            font-size: 1.2rem; /* Увеличенный размер шрифта */
+            transition: color 0.2s ease-in-out;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: #ffeb3b; /* Ярко-желтый для активных или наведенных ссылок */
+        }
+
+        .navbar-toggler {
+            border-color: #f8f9fa; /* Светлая граница переключателя для лучшего контраста */
+        }
+
+        .dropdown-menu {
+            background-color: #28a745; /* Соответствие фону навигационной панели */
+            border: none;
+        }
+
+        .dropdown-menu .dropdown-item {
+            color: #f8f9fa;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #218838; /* Немного более темный зеленый при наведении */
+        }
+
+        /* Стиль логотипа */
+        .navbar-brand img {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Эффект наведения на ссылку в подвале */
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            font-size: 1.1rem; /* Увеличенный размер шрифта для подвала */
+        }
+        /* Показать выпадающее меню при наведении */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Удалить задержку для мгновенного отображения */
+.nav-item.dropdown .dropdown-menu {
+    margin-top: 0;
+    transition: none;
+}
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('app_home') }}">
-                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffc09.deviantart.net%2Ffs70%2Ff%2F2013%2F052%2F2%2Fd%2Ftsarbucks_coffee_by_badassium-d5vqukf.png&f=1&nofb=1&ipt=eee53ad7807ae5d4443bbca45c2c6141e7fbda63c7baab87473884b8612407c1&ipo=images" alt="Логотип" class="d-inline-block align-text-top rounded-circle" style="width: 150px; height: 150px;">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" aria-current="page" href="{{ path('app_home') }}">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Вход</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">Контакт</a>
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_faq' %}active{% endif %}" href="{{ path('app_faq') }}"> RSS</a>
-                       
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-globe"></i> Язык
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home') }}">
+            <img src="{{ asset('images/logo.jpg') }}" alt="Логотип" class="d-inline-block align-text-top rounded-circle">
+        </a>
+        <span class="text-white fw-bold" style="font-size: 1.5rem; letter-spacing: 1px;">Tsarbucks Coffee</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-light">
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    {% if app.user %}
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_user_dashboard' %}active{% endif %}" href="{{ path('app_user_dashboard') }}">
+                            Профиль
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="/">🇫🇷 Français</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_english') }}">🇬🇧 English</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_castellano') }}">🇪🇸 Español</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_russian') }}">🇷🇺 Русский</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                    {% else %}
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">
+                            Клуб Номенклатуры
+                        </a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">Контакт</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_faq' %}active{% endif %}" href="{{ path('app_faq') }}">Поток СССР</a>
+                </li>
+                <li>
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'urss_index' %}active{% endif %}" href="{{ path('urss_index') }}">
+                        <i class="fas fa-rss" style="color: orange; font-size: 24px;"></i>
+                    </a>
+                </li>
+                <!-- Меню языков -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" aria-expanded="false">
+                        <i class="fas fa-globe"></i> Язык
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="/">🇫🇷 Французский</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_english') }}">🇬🇧 Английский</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_castellano') }}">🇪🇸 Испанский</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_russian') }}">🇷🇺 Русский</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <main>
         {% block body %}{% endblock %}
     </main>
-
     <footer class="bg-success text-white text-center py-4">
         <div class="container">
-              <p>
-                <a href="{{ path('app_legal_russe') }}" class="text-white">Правовые уведомления</a>
-                <a href="{{ path('app_cgu_russe') }}" class="text-white">Условия использования</a>
-                <a href="{{ path('app_cgv_russe') }}" class="text-white">Условия использования</a>
-                <a href="{{ path('app_rgpd_russe') }}" class="text-white">Политика конфиденциальности</a>
+            <p>&copy; 2025 TsarBucks. Все права защищены.</p>
+            <p>
+                <a href="{{ path('app_legal') }}" class="text-white">Правовая информация</a>
+                <a href="{{ path('app_cgu') }}" class="text-white">Условия использования</a>
+                <a href="{{ path('app_cgv') }}" class="text-white">Условия продажи</a>
+                <a href="{{ path('app_rgpd') }}" class="text-white">GDPR</a>
             </p>
+            <div class="social-icons mt-3">
+    <a href="https://www.facebook.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.twitter.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>
+
         </div>
-         <div class="social-icons mt-3">
-                <a href="https://www.facebook.com/votrepage" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.twitter.com/votrepage" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/votrepage" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/votrepage" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
-            </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/path/to/your/custom/scripts.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 </body>
 </html>

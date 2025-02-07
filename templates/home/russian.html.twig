@@ -1,36 +1,68 @@
-{% extends 'russianBase.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный слой */
+        z-index: 1;
+    }
 
+    .container {
+        z-index: 2;
+    }
+    </style>
+{% endblock %}
 {% block title %}Главная - Tsarbucks{% endblock %}
 
 {% block body %}
-<header class="text-center text-white py-5" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images'); background-size: cover; background-position: center; min-height: 400px;">
-    <div class="container">
+
+<header class="text-center text-white py-5" style="background-image: url('images/devanture.jpg'); background-size: cover; background-position: center; min-height: 400px; position: relative;">
+    <div class="overlay"></div>
+    <div class="container position-relative">
         <h1 class="display-4">Добро пожаловать в TsarBucks</h1>
         <p class="lead">Откройте для себя лучшие кофейни рядом с вами</p>
-        <a href="{{ path('app_salons_russe') }}" class="btn btn-success btn-lg">Посмотреть кофейни</a>
     </div>
 </header>
 
 <section class="py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-4">Концепция Tsarbucks</h2>
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.r29static.com%2Fbin%2Fentry%2Ff13%2Fx%2C80%2F1743546%2Fimage.jpg&f=1&nofb=1&ipt=583b6949c22a36e694637256b169290a9b1c49155acf0e762c251e7ce2b2d2b4&ipo=images" class="img-fluid rounded" alt="Café Tsarbucks">
+        <h2 class="text-center mb-5 text-success fw-bold" style="letter-spacing: 1px;">Концепция Tsarbucks</h2>
+        <div class="row align-items-center">
+            <!-- Раздел с изображением -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="{{ asset('images/toulouse.jpg') }}" class="img-fluid rounded shadow" alt="Кафе Tsarbucks">
             </div>
+            <!-- Раздел с текстом и кнопками -->
             <div class="col-md-6">
-                <p class="text-center">
-                     В Tsarbucks мы не просто кофейня, мы – целое впечатление. Вдохновленные историей и культурой России, каждая кофейня Tsarbucks предлагает вам утончённую и уютную атмосферу для наслаждения высококачественным кофе. Независимо от того, ищете ли вы место для отдыха или хотите узнать больше о культуре, наши кофейни созданы для вас.
-                </p>
-                <p class="text-center">
-                 Помимо изысканных напитков, Tsarbucks приглашает вас принять участие в тематических мастер-классах, где вы можете узнать больше о кофе или открыть для себя интересные аспекты русской культуры. От обжарки до дегустации, а также лекций о российской императорской истории, каждый визит в Tsarbucks – это погружение в мир вкусов и знаний.
-                </p>
-                <p class="text-center">
-                </p>
-                <p class="text-center">
-                    Наши кофейни – это места, где традиции встречаются с современностью, где каждая чашка кофе становится возможностью путешествовать во времени и пространстве. Приходите и узнайте, почему Tsarbucks – это не просто кофейня, а настоящая дестинация.
-                </p>
-                </p>
+                <div class="mb-4 text-center">
+                    <p class="lead">
+                        <strong>Добро пожаловать в TsarBucks!</strong><br>
+                        Любое сходство с американской сетью кофеен является случайным.
+                    </p>
+                    <a href="{{ path('app_salons') }}" class="btn btn-success btn-lg text-white shadow-sm">
+                        <i class="fas fa-coffee"></i> Посмотреть салоны
+                    </a>
+                </div>
+                <div class="mb-4 text-center">
+                    <p class="lead">
+                        Душа Tsarbucks — это <strong>эксцентричный юмор</strong> и <strong>дружеские мероприятия</strong>.
+                    </p>
+                    <a href="{{ path('app_activites') }}" class="btn btn-info btn-lg text-white shadow-sm">
+                        <i class="fas fa-users"></i> Посмотреть мероприятия
+                    </a>
+                </div>
+                <div class="text-center">
+                    <p class="lead">
+                        Наше меню — это настоящее <strong>кулинарное путешествие</strong> с игривым духом.
+                    </p>
+                    <a href="{{ path('app_menu_index') }}" class="btn btn-success btn-lg text-white shadow-sm">
+                        <i class="fas fa-utensils"></i> Посмотреть меню
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -43,35 +75,93 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">"Лучший кофе в империи! Вы чувствуете себя царем в своем дворце."</p>
-                        <br>
-                        <footer class="blockquote-footer">Царь Пётр Великий</footer>
+                        <p class="mb-0">"Лучший кофе в империи! Чувствуешь себя как царь в своем дворце."</p>
+                        <footer class="blockquote-footer mt-3">Царь Петр Великий</footer>
                     </blockquote>
                 </div>
                 <div class="carousel-item">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">"Королевская атмосфера и императорский кофе — настоящий праздник для чувств!"</p>
-                        <br>
-                        <footer class="blockquote-footer">Царица Александра</footer>
+                        <p class="mb-0">"Царская атмосфера и императорский кофе, настоящий пир для чувств!"</p>
+                        <footer class="blockquote-footer mt-3">Царица Александра</footer>
                     </blockquote>
                 </div>
                 <div class="carousel-item">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">"Напитки, достойные императорского двора, и королевское обслуживание!"</p>
-                        <br>
-                        <footer class="blockquote-footer">Царь Николай II</footer>
+                        <p class="mb-0">"Напитки, достойные императорского двора, и царское обслуживание!"</p>
+                        <footer class="blockquote-footer mt-3">Царь Николай II</footer>
                     </blockquote>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Предыдущий</span>
-            </a>
-            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Следующий</span>
-            </a>
+                <span class="">Следующий</span>
+            </button>
+            <ol class="carousel-indicators">
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></li>
+            </ol>
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cookieModalLabel">Немного печенья? 🍪</h5>
+            </div>
+            <div class="modal-body text-center">
+                <p>
+                    Товарищ, нам нужны твои куки для поддержки кофейной революции!<br>
+                    Обещаем, никакого шпионажа, только хороший кофе и анонимная статистика.
+                </p>
+                <p>
+                    Этот проект является вымышленным творением, созданным в рамках бакалавриата и профессионального титула разработчика/дизайнера веб-приложений в My Digital School Bordeaux Павлом-Франком Денкоссом.
+                    Tsarbucks вдохновлен историей царской и советской России до падения Берлинской стены. Это не апология этих политических режимов или современного.
+                    Надеюсь, вы оцените этот не совсем ортодоксальный и не совсем католический проект без протестов.
+                </p>
+                <img src="https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif" alt="Gif с печеньем" class="img-fluid rounded">
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" id="acceptCookies">Согласен, за Tsarbuckocracy!</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет, предпочитаю остаться без кофе...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieModal = new bootstrap.Modal(document.getElementById('cookieModal'), {
+        backdrop: 'static',
+        keyboard: false
+    });
+    const acceptButton = document.getElementById('acceptCookies');
+
+    // Проверка, существует ли куки
+    const isCookieAccepted = document.cookie.split('; ').find(row => row.startsWith('cookieConsent='));
+
+    // Показать модальное окно, если куки не установлен
+    if (!isCookieAccepted) {
+        cookieModal.show();
+    }
+
+    // Обработка нажатия на кнопку
+    acceptButton.addEventListener('click', () => {
+        document.cookie = "cookieConsent=true; path=/; max-age=" + 60 * 60 * 24 * 365; // 1 год
+        alert('Спасибо, товарищ! Ваш вклад будет записан в историю императорского кофе.');
+        cookieModal.hide();
+    });
+});
+</script>
+
 {% endblock %}

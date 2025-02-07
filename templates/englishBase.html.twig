@@ -5,66 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}TsarBucks{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/path/to/your/custom/styles.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Ensure the entire page is at least 100% of the viewport height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Main content should take all available space */
+        main {
+            flex: 1;
+        }
+
+        /* Footer should stick to the bottom */
+        footer {
+            flex-shrink: 0;
+        }
+
+        /* Navbar styles */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #f8f9fa; /* Lighter white for better contrast */
+            font-weight: 500;
+            font-size: 1.2rem; /* Increased font size */
+            transition: color 0.2s ease-in-out;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: #ffeb3b; /* Bright yellow for active or hovered links */
+        }
+
+        .navbar-toggler {
+            border-color: #f8f9fa; /* Lighter toggle border for better contrast */
+        }
+
+        .dropdown-menu {
+            background-color: #28a745; /* Match navbar background */
+            border: none;
+        }
+
+        .dropdown-menu .dropdown-item {
+            color: #f8f9fa;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #218838; /* Slightly darker green for hover */
+        }
+
+        /* Logo styling */
+        .navbar-brand img {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Footer link hover effect */
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            font-size: 1.1rem; /* Increased font size for footer */
+        }
+        /* Display the dropdown menu on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Remove delay for instant display */
+.nav-item.dropdown .dropdown-menu {
+    margin-top: 0;
+    transition: none;
+}
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('app_home') }}">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F90%2F2e%2Fea%2F902eeab4429b4945f875e36bc529f0a6.jpg&f=1&nofb=1&ipt=cc2c3772337188bf6e1e782bf1d9716d1ef4afcaf7b5546f3831d2e9e81ca11f&ipo=images" alt="Logo" class="d-inline-block align-text-top rounded-circle" style="width: 150px; height: 150px;">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" aria-current="page" href="{{ path('app_english') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login_english') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">Contact</a>
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_faq' %}active{% endif %}" href="{{ path('app_faq') }}">RSS feed</a>
-                       
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-globe"></i> Language
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home') }}">
+            <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="d-inline-block align-text-top rounded-circle">
+        </a>
+        <span class="text-white fw-bold" style="font-size: 1.5rem; letter-spacing: 1px;">Tsarbucks Coffee</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-light">
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    {% if app.user %}
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_user_dashboard' %}active{% endif %}" href="{{ path('app_user_dashboard') }}">
+                            Profile
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="/">🇫🇷 Français</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_english') }}">🇬🇧 English</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_castellano') }}">🇪🇸 Español</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_russian') }}">🇷🇺 Русский</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                    {% else %}
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">
+                            Nomenklatura Club
+                        </a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_faq' %}active{% endif %}" href="{{ path('app_faq') }}">USSR Feed</a>
+                </li>
+                <li>
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'urss_index' %}active{% endif %}" href="{{ path('urss_index') }}">
+                        <i class="fas fa-rss" style="color: orange; font-size: 24px;"></i>
+                    </a>
+                </li>
+                <!-- Language menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" aria-expanded="false">
+                        <i class="fas fa-globe"></i> Language
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="/">🇫🇷 Français</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_english') }}">🇬🇧 English</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_castellano') }}">🇪🇸 Español</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_russian') }}">🇷🇺 Русский</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <main>
         {% block body %}{% endblock %}
     </main>
-
     <footer class="bg-success text-white text-center py-4">
         <div class="container">
-           <p>
-                <a href="{{ path('app_legal_english') }}" class="text-white">Legal Notices</a>
-                <a href="{{ path('app_cgu_english') }}" class="text-white">TOU</a>
-                <a href="{{ path('app_cgv_english') }}" class="text-white">TOS</a>
-                <a href="{{ path('app_rgpd_english') }}" class="text-white">Privacy Policy</a>
+            <p>&copy; 2025 TsarBucks. All rights reserved.</p>
+            <p>
+                <a href="{{ path('app_legal') }}" class="text-white">Legal Notice</a>
+                <a href="{{ path('app_cgu') }}" class="text-white">Terms of Use</a>
+                <a href="{{ path('app_cgv') }}" class="text-white">Terms of Sale</a>
+                <a href="{{ path('app_rgpd') }}" class="text-white">GDPR</a>
             </p>
+            <div class="social-icons mt-3">
+    <a href="https://www.facebook.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.twitter.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com/votrepage" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>
+
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/path/to/your/custom/scripts.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 </body>
 </html>
