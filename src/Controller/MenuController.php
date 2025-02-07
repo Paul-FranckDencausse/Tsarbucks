@@ -9,14 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MenuController extends AbstractController
 {#[Route('/menu', name: 'app_menu_index')]
-    public function menu(MenuRepository $menuRepo): Response
+    public function index(MenuRepository $menuRepository): Response
     {
-        $menus = $menuRepo->findAll();
+        // Récupère tous les éléments du menu
+        $menus = $menuRepository->findAll();
+
         return $this->render('menu/index.html.twig', [
-            'allMenus' => [
-                'menus' => $menus,
-               
-            ],
+            'menus' => $menus,
         ]);
  
     }

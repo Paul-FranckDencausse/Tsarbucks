@@ -12,40 +12,119 @@
 <div class="container mt-5">
     <h1 class="text-center">Notre Menu</h1>
     <p class="text-center">Découvrez notre menu de boissons chaudes, brunchs et "goûners"(goûter + diner).</p>
-    <div class="row">
-        <!-- Boissons Chaudes -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('images/molokom.jpg') }}" class="card-img-top" alt="Boissons Chaudes">
-                <div class="card-body">
-                    <h5 class="card-title">Boissons Chaudes</h5>
-                    <p class="card-text">Pour se réchauffer au coeur de la Toundra.</p>
-                    <a href="{{ path('app_boissons_chaudes') }}"class="btn btn-success">En savoir plus</a>
-                    </div>
-                    </div>
-        </div>
-        <!-- Brunchs -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('images/pirozhki.jpg') }}" class="card-img-top" alt="Brunchs">
-                <div class="card-body">
-                    <h5 class="card-title">Brunchs</h5>
-                    <p class="card-text">Le mélange parfait pour les grasses matinées</p>
-                    <a href="{{ path('app_brunch') }}" class="btn btn-success">En savoir plus</a>
-                    </div>
-                    </div>
-                    </div>
-        <!-- Goûners -->  
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('images/napoleon.jpg') }}" class="card-img-top" alt="Goûners">
-                <div class="card-body">
-                    <h5 class="card-title">Goûners</h5>
-                    <p class="card-text">Une invention qui saura séduire les étudiants.</p>
-                    <a href="{{ path('app_gouner') }}" class="btn btn-success">En savoir plus</a>
-                    </div>
-                    </div>
+     <div class="row">
+        {% for item in menus %}
+            {% if item.type == 'Spécialité locale' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                       <img src="{{ asset('uploads/media/' ~ item.imageFilename) ?: asset('images/default.png') }}"
+                        class="card-img-top" alt="{{ item.name }}">
 
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>Prix : </strong>{{ item.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% for item in menus %}
+            {% if item.type == 'Café' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ asset('uploads/media' ~ item.imageFilename) }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>Prix : </strong>{{ item.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+        <div class="row">
+        {% for item in menus %}
+            {% if item.type == 'Thé' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ asset('uploads/media' ~ item.imageFilename) }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>Prix : </strong>{{ item.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+        <div class="row">
+        {% for item in menus %}
+            {% if item.type == 'Chocolat Chaud' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ asset('images/' ~ item.imageFilename) }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>Prix : </strong>{{ item.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+        <div class="row">
+        {% for item in menus %}
+            {% if item.type == 'Eau' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ asset('images/' ~ item.imageFilename) }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>Prix : </strong>{{ item.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+        <div class="row">
+        {% for item in menus %}
+            {% if item.type == 'Jus' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ asset('images/' ~ item.imageFilename) }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>Prix : </strong>{{ item.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+        <div class="row">
+        {% for item in menus %}
+            {% if item.type == 'Nourriture' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ asset('images/' ~ item.imageFilename) }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>Prix : </strong>{{ item.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
