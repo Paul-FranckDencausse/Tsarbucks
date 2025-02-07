@@ -13,32 +13,43 @@
 
 <section class="py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-4">Le Concept Tsarbucks</h2>
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <img src="{{ asset('images/toulouse.jpg') }}" class="img-fluid rounded" alt="Café Tsarbucks">
+        <h2 class="text-center mb-5 text-success fw-bold" style="letter-spacing: 1px;">Le Concept Tsarbucks</h2>
+        <div class="row align-items-center">
+            <!-- Image Section -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="{{ asset('images/toulouse.jpg') }}" class="img-fluid rounded shadow" alt="Café Tsarbucks">
             </div>
+            <!-- Text and Buttons Section -->
             <div class="col-md-6">
-                <p class="text-center">
-                  Bienvenue chez TsarBucks! <br>Toute ressemblance avec une marque américaine de salons de cafés est purement fortuite.<br>
-                   <a href="{{ path('app_salons') }}" class="btn btn-success ml-2 btn-lg text-white">Voir les salons</a>
-                
-                </p>
-                <p class="text-center">
-                    L'âme de Tsarbucks c'est un humour décalé et des activités conviviales.
-                      <a href="{{ path('app_activites') }}" class="btn btn-info ml-2 btn-lg text-white">Voir les Activités</a>
-                </p>
-                <p class="text-center">
-                  Notre menu est un véritable voyage culinaire dans un esprit bon enfant. 
-                     <a href="{{ path('app_menu_index') }}" class="btn btn-success btn-lg text-white">Voir le Menu</a>
-                  
-                </p>
-           
+                <div class="mb-4 text-center">
+                    <p class="lead">
+                        <strong>Bienvenue chez TsarBucks !</strong><br>
+                        Toute ressemblance avec une marque américaine de salons de cafés est purement fortuite.
+                    </p>
+                    <a href="{{ path('app_salons') }}" class="btn btn-success btn-lg text-white shadow-sm">
+                        <i class="fas fa-coffee"></i> Voir les Salons
+                    </a>
+                </div>
+                <div class="mb-4 text-center">
+                    <p class="lead">
+                        L'âme de Tsarbucks, c'est un <strong>humour décalé</strong> et des <strong>activités conviviales</strong>.
+                    </p>
+                    <a href="{{ path('app_activites') }}" class="btn btn-info btn-lg text-white shadow-sm">
+                        <i class="fas fa-users"></i> Voir les Activités
+                    </a>
+                </div>
+                <div class="text-center">
+                    <p class="lead">
+                        Notre menu est un véritable <strong>voyage culinaire</strong> dans un esprit bon enfant.
+                    </p>
+                    <a href="{{ path('app_menu_index') }}" class="btn btn-success btn-lg text-white shadow-sm">
+                        <i class="fas fa-utensils"></i> Voir le Menu
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
 <section class="py-5">
     <div class="container">
         <h2 class="text-center mb-4">Témoignages</h2>
@@ -63,17 +74,23 @@
                     </blockquote>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </a>
+                <span class="">Next</span>
+            </button>
+            <ol class="carousel-indicators">
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></li>
+            </ol>
         </div>
     </div>
 </section>
+
 <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

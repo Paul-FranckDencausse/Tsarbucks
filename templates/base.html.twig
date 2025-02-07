@@ -73,60 +73,71 @@
         footer {
             font-size: 1.1rem; /* Increased font size for footer */
         }
+        /* Afficher le menu déroulant au survol */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Supprimer le délai pour un affichage instantané */
+.nav-item.dropdown .dropdown-menu {
+    margin-top: 0;
+    transition: none;
+}
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('app_home') }}">
-                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="d-inline-block align-text-top rounded-circle">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto text-light">
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        {% if app.user %}
-                            <a class="nav-link {% if app.request.attributes.get('_route') == 'app_user_dashboard' %}active{% endif %}" href="{{ path('app_user_dashboard') }}">
-                                Profil
-                            </a>
-                        {% else %}
-                            <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">
-                                Connexion/Inscription
-                            </a>
-                        {% endif %}
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_faq' %}active{% endif %}" href="{{ path('app_faq') }}">Flux URSS</a>
-                    </li>
-                    <li>
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'urss_index' %}active{% endif %}" href="{{ path('urss_index') }}">
-                            <i class="fas fa-rss" style="color: orange; font-size: 24px;"></i>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home') }}">
+            <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="d-inline-block align-text-top rounded-circle">
+        </a>
+        <span class="text-white fw-bold" style="font-size: 1.5rem; letter-spacing: 1px;">Tsarbucks Coffee</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-light">
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    {% if app.user %}
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_user_dashboard' %}active{% endif %}" href="{{ path('app_user_dashboard') }}">
+                            Profil
                         </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-globe"></i> Langue
+                    {% else %}
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">
+                            Nomenklatura club
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="/">🇫🇷 Français</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_english') }}">🇬🇧 English</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_castellano') }}">🇪🇸 Español</a></li>
-                            <li><a class="dropdown-item" href="{{ path('app_russian') }}">🇷🇺 Русский</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'app_faq' %}active{% endif %}" href="{{ path('app_faq') }}">Flux URSS</a>
+                </li>
+                <li>
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'urss_index' %}active{% endif %}" href="{{ path('urss_index') }}">
+                        <i class="fas fa-rss" style="color: orange; font-size: 24px;"></i>
+                    </a>
+                </li>
+                <!-- Menu des langues -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" aria-expanded="false">
+                        <i class="fas fa-globe"></i> Langue
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="/">🇫🇷 Français</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_english') }}">🇬🇧 English</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_castellano') }}">🇪🇸 Español</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_russian') }}">🇷🇺 Русский</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <main>
         {% block body %}{% endblock %}
