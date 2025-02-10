@@ -30,8 +30,8 @@
                 <td>{{ reservation.status }}</td>
                 <td>{{ reservation.activityId }}</td>
                 <td>
-                    <a href="{{ path('app_admin_reservations_show', {'id': reservation.id}) }}" class="btn btn-info btn-sm">Voir</a>
-                    <a href="{{ path('app_admin_reservations_edit', {'id': reservation.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    <a href="{{ path('app_admin_reservations_show', {'id': reservation.id}) }}" class="btn btn-info btn-lg text-white">Voir</a>
+                    <a href="{{ path('app_admin_reservations_edit', {'id': reservation.id}) }}" class="btn btn-warning btn-lg text-white">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -42,6 +42,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_reservations_new') }}" class="btn btn-primary">Créer nouveau</a>
+  
 </div>
 {% endblock %}

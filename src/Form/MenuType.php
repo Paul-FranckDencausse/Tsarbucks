@@ -22,7 +22,6 @@ class MenuType extends AbstractType
             ->add('type')
             ->add('description')
             ->add('allergies')
-            ->add('recipe_id')
             ->add('price')
             ->add('isAvailable', CheckboxType::class, [
                 'label' => 'Disponible',

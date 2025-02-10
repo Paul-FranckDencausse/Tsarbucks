@@ -21,9 +21,7 @@ class Menu
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
-    #[ORM\Column]
-    private ?int $recipe_id = null;
-
+  
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
@@ -77,17 +75,7 @@ class Menu
         return $this;
     }
 
-    public function getRecipeId(): ?int
-    {
-        return $this->recipe_id;
-    }
-
-    public function setRecipeId(int $recipe_id): static
-    {
-        $this->recipe_id = $recipe_id;
-
-        return $this;
-    }
+  
 
     public function getDescription(): ?string
     {

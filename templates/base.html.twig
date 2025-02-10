@@ -10,7 +10,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <style>
+<style>
         /* Ensure the entire page is at least 100% of the viewport height */
         html, body {
             height: 100%;
@@ -74,16 +74,16 @@
             font-size: 1.1rem; /* Increased font size for footer */
         }
         /* Afficher le menu déroulant au survol */
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-}
+        .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        }
 
-/* Supprimer le délai pour un affichage instantané */
-.nav-item.dropdown .dropdown-menu {
-    margin-top: 0;
-    transition: none;
-}
-    </style>
+        /* Supprimer le délai pour un affichage instantané */
+        .nav-item.dropdown .dropdown-menu {
+     margin-top: 0;
+     transition: none;
+     }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
@@ -107,7 +107,7 @@
                         </a>
                     {% else %}
                         <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">
-                            Nomenklatura club
+                            Connexion
                         </a>
                     {% endif %}
                 </li>

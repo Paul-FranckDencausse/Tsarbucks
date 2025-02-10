@@ -5,26 +5,30 @@
 {% block body %}
 <div class="container mt-5">
     <h1 class="mb-4">Liste des plats</h1>
-<input type="text" id="searchInput" placeholder="Rechercher..." class="form-control mb-3">
+
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
+              
                 <th>Media</th>
                 <th>Nom</th>
                 <th>Type</th>
-                <th>Recette</th>
+                <th>Allergies</th>
+                <th>Prix</th>
+                 <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for menu in menus %}
             <tr>
-                <td>{{ menu.id }}</td>
+             
                 <td>{{ menu.imageFilename }}</td>
                 <td>{{ menu.name }}</td>
                 <td>{{ menu.type }}</td>
-                <td>{{ menu.recipeId }}</td>
+                <td>{{ menu.allergies }}</td>
+                <td>{{ menu.price }}</td>
+                <td>{{ menu.description }}</td>
                 <td>
                     <a href="{{ path('app_admin_menu_show', {'id': menu.id}) }}" class="btn btn-info btn-lg text-light">Voir</a>
                     <a href="{{ path('app_admin_menu_edit', {'id': menu.id}) }}" class="btn btn-warning btn-lg text-light">Modifier</a>

@@ -5,13 +5,13 @@
 {% block body %}
 <div class="container mt-5">
     <h1 class="mb-4">Modifier les Réservations</h1>
-
+<br>
     <div class="card p-4 shadow-sm mb-4">
         {{ include('admin_reservations/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
     </div>
 
     <div class="d-flex justify-content-between mt-3">
-        <a href="{{ path('app_admin_reservations_index') }}" class="btn btn-primary">
+        <a href="{{ path('app_admin_reservations_index') }}" class="btn btn-info btn-lg text-white">
             <i class="bi bi-arrow-left"></i> Retour à la liste
         </a>
 
